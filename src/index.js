@@ -51,7 +51,7 @@ const app = async (projectPath, lng) => {
       stylelint(projectPath),
       lang(page, lng),
       titleEmmet(page),
-      posAbsolute(path.join(projectPath, 'styles', 'style.css'), 'styles|style.css'),
+      posAbsolute(path.join(projectPath, 'styles', 'style.css'), 'styles/style.css'),
       compareLayout(baseUrl, {
         canonicalImage: 'layout-canonical-1550.jpg',
         pageImage: 'layout-1550.jpg',
