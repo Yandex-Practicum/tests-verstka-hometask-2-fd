@@ -13,6 +13,7 @@ import {
 import ru from './locales/ru.js';
 import {
   posAbsolute,
+  extraFiles,
 } from './tests.js';
 
 const [, , PROJECT_PATH, LANG = 'ru'] = process.argv;
@@ -42,7 +43,13 @@ const app = async (projectPath, lng) => {
     if (structureErrors.length) {
       return structureErrors;
     }
+    
+    const extraFilesErrors = extraFiles(path.join(projectPath, 'styles'), ['preloader.css', 'error.css', 'style.css']);
 
+    if (extraFilesErrors.length) {
+      return extraFilesErrors;
+    }
+    
     const baseUrl = 'http://localhost:3000';
     const viewport = { width: 1550, height: 1080 };
     const launchOptions = { args: ['--no-sandbox', '--disable-setuid-sandbox'] };
