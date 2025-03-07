@@ -26,6 +26,22 @@ const posAbsolute = async (stylesPath) => {
   return errors;
 };
 
+const extraFiles = (stylesPath, allowedFiles) => {
+  const files = fs.readdirSync(stylesPath);
+
+  const extraFiles = files.filter(file => !allowedFiles.includes(file));
+
+  if (extraFiles.length > 0) {
+    return [{
+      id: 'extraFiles',
+      values: {
+        fileNames: extraFiles.join(', ')
+      }
+    }];
+  }
+};
+
 export {
   posAbsolute,
+  extraFiles,
 };
