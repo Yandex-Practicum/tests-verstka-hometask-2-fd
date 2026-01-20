@@ -39,6 +39,8 @@ const extraFiles = (stylesPath, allowedFiles) => {
       }
     }];
   }
+
+  return [];
 };
 
 export {
